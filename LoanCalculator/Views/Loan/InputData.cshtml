@@ -1,0 +1,67 @@
+﻿@model LoanCalculator.Models.InputDataModel
+
+@{
+    ViewBag.Title = "Kalkuláció";
+}
+
+<h2 id="input">Adja meg az adatokat a kalkulációhoz!</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+	
+	<hr />
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+	<div class="form-group">
+		@Html.LabelFor(model => model.LoanAmmount,"Hitelösszeg (HUF)", htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.LoanAmmount, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.LoanAmmount, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Term,"Futamidő (Hónap)", htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.Term, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.Term, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Interest,"Kamat (%)", htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.Interest, new { htmlAttributes = new { @class = "form-control" , @type ="number" } })
+			@Html.ValidationMessageFor(model => model.Interest, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.InterestPeriod, "Kamatperiódus (db)", htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.InterestPeriod, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.InterestPeriod, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-offset-2 col-md-10">
+			<input type="submit" value="Kalkuláció" class="btn btn-primary"/>
+		</div>
+	</div>
+</div>
+}
+
+<div>
+	@Html.ActionLink("Vissza", "Index", "home")
+	
+
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,113 @@
+﻿@model IEnumerable<LoanCalculator.Models.CalculationSearchModel>
+@{
+
+	ViewBag.Title = "CalculationSearch";
+}
+
+<h2 class="title">Korábbi kalkulációk keresése</h2>
+
+
+@using (Html.BeginForm("CalculationSearch", "Loan", FormMethod.Post))
+{
+	@Html.AntiForgeryToken()
+
+	<div class="containersearch anim3">
+		<div class="row ">
+			<div class="form-group col-xs-6 anim4">
+				@Html.LabelFor(model => model.FirstOrDefault().Filter.CalculationTimeFrom, htmlAttributes: new { @class = "control-label col-md-2", style = "margin-top:65px", })
+				@Html.EditorFor(model => model.FirstOrDefault().Filter.CalculationTimeFrom, new { htmlAttributes = new { @class = "form-control", style = "margin-top:50px" } })
+				@Html.ValidationMessageFor(model => model.FirstOrDefault().Filter.CalculationTimeFrom, "", new { @class = "text-danger" })
+
+			</div>
+			<div class="form-group col-xs-6 anim4">
+
+				@Html.EditorFor(model => model.FirstOrDefault().Filter.CalculationTimeTo, new { htmlAttributes = new { @class = "form-control", placeholder = "Ig", style = "margin-top:50px" } })
+				@Html.ValidationMessageFor(model => model.FirstOrDefault().Filter.CalculationTimeTo, "", new { @class = "text-danger" })
+			</div>
+
+		</div>
+	</div>
+
+
+	<div class="containersearch anim3">
+		<div class="row">
+			<div class="form-group col-xs-6 anim4">
+				@Html.LabelFor(model => model.FirstOrDefault().Filter.LoanAmmountFrom, htmlAttributes: new { @class = "control-label col-md-2", style = "margin-top:65px" })
+				@Html.EditorFor(model => model.FirstOrDefault().Filter.LoanAmmountFrom, new { htmlAttributes = new { @class = "form-control", placeholder = "Min", style = "margin-top:50px" } })
+				@Html.ValidationMessageFor(model => model.FirstOrDefault().Filter.LoanAmmountFrom, "", new { @class = "text-danger" })
+			</div>
+			<div class="form-group col-xs-6 anim4">
+
+				@Html.EditorFor(model => model.FirstOrDefault().Filter.LoanAmmountTo, new { htmlAttributes = new { @class = "form-control", placeholder = "Max", style = "margin-top:50px" } })
+				@Html.ValidationMessageFor(model => model.FirstOrDefault().Filter.LoanAmmountTo, "", new { @class = "text-danger" })
+			</div>
+
+
+
+
+		</div>
+	</div>
+	<div class="container" id="m3">
+		<div class="row">
+			<div class="col-xs-12 anim5">
+				
+				<input type="submit" value="Keresés" id="search" class="btn btn-primary" />
+
+			</div>
+		</div>
+	</div>
+
+
+}
+
+<table class="table table-hover table-bordered anim2">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.CalculationTime)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.LoanAmmount)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Interest)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Sum)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Term)
+		</th>
+		<th>Műveletek</th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(model => item.CalculationTime)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.LoanAmmount)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.Interest)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Sum)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.Term)
+			</td>
+			<td>
+				@Html.ActionLink("Részletek", "DataCalculation", new { Id = item.Id })|
+				@Html.ActionLink("Törlés", "Delete", new { id = item.Id })|
+				@Html.ActionLink("Export", "ExportToExcel", new { id = item.Id })
+			</td>
+
+		</tr>
+	}
+
+</table>
+
+
+

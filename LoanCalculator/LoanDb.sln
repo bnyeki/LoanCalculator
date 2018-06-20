@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2011
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "LoanDb", "LoanDb\LoanDb.sqlproj", "{7DAEADB6-3263-4BD8-A533-5C2C47E3128B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DAEADB6-3263-4BD8-A533-5C2C47E3128B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DAEADB6-3263-4BD8-A533-5C2C47E3128B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DAEADB6-3263-4BD8-A533-5C2C47E3128B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7DAEADB6-3263-4BD8-A533-5C2C47E3128B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DAEADB6-3263-4BD8-A533-5C2C47E3128B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DAEADB6-3263-4BD8-A533-5C2C47E3128B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63DB7E49-6C9B-4F88-8F7C-9D4BDCFCE394}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.n-ware.hu/tfs/reaktorlabs
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = LoanDb\\LoanDb.sqlproj
+		SccProjectName1 = LoanDb
+		SccLocalPath1 = LoanDb
+	EndGlobalSection
+EndGlobal

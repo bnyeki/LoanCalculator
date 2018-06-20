@@ -1,0 +1,66 @@
+﻿@model LoanCalculator.DeleteModel
+
+@{
+	ViewBag.Title = "Delete";
+}
+
+<h2 class="delete">Törlés</h2>
+
+
+	<h3 class="confirm" >Biztos benne hogy törölni szeretné a megadott kalkulációt?</h3>
+
+	<table class="table">
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.CalculationTime)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.LoanAmmount)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Interest)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Term)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.UserName)
+			</th>
+
+		</tr>
+
+
+		<tr>
+			<td>
+				@Html.DisplayFor(model => model.CalculationTime)
+			</td>
+			<td>
+				@Html.DisplayFor(model => model.LoanAmmount)
+			</td>
+			<td>
+				@Html.DisplayFor(model => model.Interest)
+			</td>
+			<td>
+				@Html.DisplayFor(model => model.Term)
+			</td>
+			<td>
+				@Html.DisplayFor(model => model.UserName)
+			</td>
+
+
+		</tr>
+
+
+	</table>
+
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="form-actions no-color">
+			<input type="submit" value="Törlés" class="btn btn-primary" /> |
+			@Html.ActionLink("Vissza", "CalculationSearch")
+		</div>
+	}
+

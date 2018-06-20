@@ -1,0 +1,29 @@
+﻿@model LoanCalculator.Models.IndexViewModel
+@{
+    ViewBag.Title = "Fiókbeállítás";
+}
+
+<h2 style="font-family:Righteous;font-size:35px;">@ViewBag.Title</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4 style="font-family:Righteous;font-size:20px;">Fiókbeállítások módosítása</h4>
+    
+	<dl class="dl-horizontal">
+		<dt>Jelszó:</dt>
+		<dd>
+			
+			@if (Model.HasPassword)
+		{
+			@Html.ActionLink("Jelszóváltoztatás", "ChangePassword")
+	}
+	else
+	{
+		@Html.ActionLink("Létrehozás", "SetPassword")
+}
+			
+		</dd>
+		
+			
+		</dl>
+	</div>
