@@ -17,7 +17,7 @@
 		
 		<div class="column col-xs-4 anim1-1">
 			<p>Futamidő: @Model.Term Hónap</p>
-			<p>Kamat mértéke: @Model.Interest %</p>
+			<p>Kamat átlagos értéke: @Model.AverageInterest %</p>
 			<p>Havi átlagos fizetendő összeg: @Html.DisplayFor(model => model.Average)</p>
 
 		</div>
@@ -36,29 +36,29 @@
 <h3 class="title">Részletező paraméterek</h3>
 
 <div class="anim2">
-<table class="table table-hover table-bordered">
-	<tr>
-		<th>
-			@Html.DisplayNameFor(model => model.Calculation.FirstOrDefault().Period)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.Calculation.FirstOrDefault().Payment)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.Calculation.FirstOrDefault().InterestPaid)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.Calculation.FirstOrDefault().PrinciplePaid)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.Calculation.FirstOrDefault().RemainingPrincipal)
-		</th>
+	<table class="table table-hover table-bordered">
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.CalculationFirst.FirstOrDefault().Period)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.CalculationFirst.FirstOrDefault().Payment)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.CalculationFirst.FirstOrDefault().InterestPaid)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.CalculationFirst.FirstOrDefault().PrinciplePaid)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.CalculationFirst.FirstOrDefault().RemainingPrincipal)
+			</th>
 
 
-	</tr>
-
-	@foreach (var item in Model.Calculation)
-	{
+		</tr>
+	
+		@foreach (var item in Model.CalculationFirst)
+		{
 		<tr>
 			<td>
 				@Html.DisplayFor(modelItem => item.Period)
@@ -78,9 +78,61 @@
 
 
 		</tr>
-	}
 
-</table>
+		}
+
+		@if (Model.InterestPeriod != 1)
+	{
+		foreach (var item in Model.CalculationSecond)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Period)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Payment)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.InterestPaid)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.PrinciplePaid)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.RemainingPrincipal)
+				</td>
+
+
+			</tr>
+	}
+}
+		@if (Model.InterestPeriod == 3)
+	{
+		foreach (var item in Model.CalculationThird)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Period)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Payment)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.InterestPaid)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.PrinciplePaid)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.RemainingPrincipal)
+				</td>
+
+
+			</tr>
+	}
+}
+
+	</table>
 	</div>
 <div>
 	@Html.ActionLink("Vissza a főoldalra", "Index", "home")

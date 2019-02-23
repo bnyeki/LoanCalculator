@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LoanDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LoanSearchParameter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoanAmmount" Type="float" Nullable="false" />
+          <Property Name="Term" Type="int" Nullable="false" />
+          <Property Name="InterestPeriodId" Type="int" Nullable="false" />
+          <Property Name="CalculationTime" Type="datetime" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="InterestFirstPeriod" Type="float" Nullable="false" />
+          <Property Name="InterestSecondPeriod" Type="float" Nullable="false" />
+          <Property Name="InterestThirdPeriod" Type="float" Nullable="false" />
+          <Property Name="TermFirstPeriod" Type="int" Nullable="false" />
+          <Property Name="TermSecondPeriod" Type="int" Nullable="false" />
+          <Property Name="TermThirdPeriod" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Period">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_LoanSearchParameter_Period">
+          <End Role="Period" Type="Self.Period" Multiplicity="1" />
+          <End Role="LoanSearchParameter" Type="Self.LoanSearchParameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Period">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LoanSearchParameter">
+              <PropertyRef Name="InterestPeriodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LoanDbModelStoreContainer">
+          <EntitySet Name="LoanSearchParameter" EntityType="Self.LoanSearchParameter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Period" EntityType="Self.Period" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_LoanSearchParameter_Period" Association="Self.FK_LoanSearchParameter_Period">
+            <End Role="Period" EntitySet="Period" />
+            <End Role="LoanSearchParameter" EntitySet="LoanSearchParameter" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LoanDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LoanSearchParameter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoanAmmount" Type="Double" Nullable="false" />
+          <Property Name="Term" Type="Int32" Nullable="false" />
+          <Property Name="InterestPeriodId" Type="Int32" Nullable="false" />
+          <Property Name="CalculationTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InterestFirstPeriod" Type="Double" Nullable="false" />
+          <Property Name="InterestSecondPeriod" Type="Double" Nullable="false" />
+          <Property Name="InterestThirdPeriod" Type="Double" Nullable="false" />
+          <Property Name="TermFirstPeriod" Type="Int32" Nullable="false" />
+          <Property Name="TermSecondPeriod" Type="Int32" Nullable="false" />
+          <Property Name="TermThirdPeriod" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Period" Relationship="Self.FK_LoanSearchParameter_Period" FromRole="LoanSearchParameter" ToRole="Period" />
+        </EntityType>
+        <EntityType Name="Period">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LoanSearchParameter" Relationship="Self.FK_LoanSearchParameter_Period" FromRole="Period" ToRole="LoanSearchParameter" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_LoanSearchParameter_Period">
+          <End Role="Period" Type="Self.Period" Multiplicity="1" />
+          <End Role="LoanSearchParameter" Type="Self.LoanSearchParameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Period">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LoanSearchParameter">
+              <PropertyRef Name="InterestPeriodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LoanDbEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LoanSearchParameter" EntityType="Self.LoanSearchParameter" />
+          <EntitySet Name="Period" EntityType="Self.Period" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_LoanSearchParameter_Period" Association="Self.FK_LoanSearchParameter_Period">
+            <End Role="Period" EntitySet="Period" />
+            <End Role="LoanSearchParameter" EntitySet="LoanSearchParameter" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LoanDbModelStoreContainer" CdmEntityContainer="LoanDbEntities1">
+          <EntitySetMapping Name="LoanSearchParameter">
+            <EntityTypeMapping TypeName="LoanDbModel.LoanSearchParameter">
+              <MappingFragment StoreEntitySet="LoanSearchParameter">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LoanAmmount" ColumnName="LoanAmmount" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="InterestPeriodId" ColumnName="InterestPeriodId" />
+                <ScalarProperty Name="CalculationTime" ColumnName="CalculationTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="InterestFirstPeriod" ColumnName="InterestFirstPeriod" />
+                <ScalarProperty Name="InterestSecondPeriod" ColumnName="InterestSecondPeriod" />
+                <ScalarProperty Name="InterestThirdPeriod" ColumnName="InterestThirdPeriod" />
+                <ScalarProperty Name="TermFirstPeriod" ColumnName="TermFirstPeriod" />
+                <ScalarProperty Name="TermSecondPeriod" ColumnName="TermSecondPeriod" />
+                <ScalarProperty Name="TermThirdPeriod" ColumnName="TermThirdPeriod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Period">
+            <EntityTypeMapping TypeName="LoanDbModel.Period">
+              <MappingFragment StoreEntitySet="Period">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="LoanDbModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -46,7 +46,9 @@
  */
 
 window.Modernizr = (function( window, document, undefined ) {
-
+	if (sessionStorage > 0) {
+		$(".anim4").stop();
+	}
     var version = '2.6.2',
 
     Modernizr = {},

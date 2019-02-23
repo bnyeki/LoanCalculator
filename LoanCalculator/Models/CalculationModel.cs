@@ -19,8 +19,9 @@ namespace LoanCalculator.Models
         [Display(Name = "Futamidő")]
         public int Term { get; set; }
 
-        [Display(Name = "Kamat")]
-        public double Interest { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [Display(Name = "ÁtlagosKamat")]
+        public double AverageInterest { get; set; }
 
         [Display(Name = "Kamatperiódus")]
         public int InterestPeriod { get; set; }
@@ -43,13 +44,15 @@ namespace LoanCalculator.Models
 
         public string UserId { get; set; }
 
-        
-        public List<PeriodicCalculation> Calculation { get; set; }
+
+        public List<PeriodicCalculationFirst> CalculationFirst { get; set; }
+        public List<PeriodicCalculationSecond> CalculationSecond { get; set; }
+        public List<PeriodicCalculationThird> CalculationThird { get; set; }
 
 
         [Display(Name = "Felhasználónév")]
         public string UserName { get; set; }
 
-        
+
     }
 }

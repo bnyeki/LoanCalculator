@@ -24,12 +24,6 @@ namespace LoanCalculator.Models
         public int Term { get; set; }
 
         [Required]
-        [Range(1, int.MaxValue, ErrorMessage = "A kamat csak pozitív egész szám lehet!")]
-        [DisplayFormat(DataFormatString = "{0:P}")]
-        [Display(Name = "Kamat")]
-        public double Interest { get; set; }
-
-        [Required]
         [Range(1, 3)]
         [Display(Name = "Kamatperiódus")]
         public int InterestPeriod { get; set; }
@@ -39,6 +33,31 @@ namespace LoanCalculator.Models
         [DataType(DataType.Date)]
         public DateTime CalculationTime { get; set; }
 
+        
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = true)]
+        [Range(1, int.MaxValue, ErrorMessage = "A kamat csak pozitív szám lehet!")]
+        public double InterestFirstPeriod { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = true)]
+        [Range(1, int.MaxValue, ErrorMessage = "A kamat csak pozitív szám lehet!")]
+        public double? InterestSecondPeriod { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = true)]
+        [Range(1, int.MaxValue, ErrorMessage = "A kamat csak pozitív szám lehet!")]
+        public double? InterestThirdPeriod { get; set; }
+
+       
+        [Range(1, int.MaxValue, ErrorMessage = "A futamidő csak pozitív egész szám lehet!")]
+        public int  FirstTerm { get; set; }
+
+       
+        [Range(1, int.MaxValue, ErrorMessage = "A futamidő csak pozitív egész szám lehet!")]
+        public int?  SecondTerm { get; set; }
+
+       
+        [Range(1, int.MaxValue, ErrorMessage = "A futamidő csak pozitív egész szám lehet!")]
+        public int? ThirdTerm { get; set; }
+        
         public string UserId { get; set; }
 
 

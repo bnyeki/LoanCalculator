@@ -8,7 +8,7 @@ using System.Web;
 /// </summary>
 namespace LoanCalculator.Models
 {
-    public class PeriodicCalculation
+    public class PeriodicCalculationFirst
     {
         [DisplayFormat(DataFormatString = "{0:C}")]
         [Display(Name = "Havonta fizetendő kamat")]
@@ -27,4 +27,51 @@ namespace LoanCalculator.Models
 
         
     }
+
+
+    public class PeriodicCalculationSecond
+    {
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [Display(Name = "Havonta fizetendő kamat")]
+        public double InterestPaid { get; set; }
+        [Display(Name = "Hónap")]
+        public int Period { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [Display(Name = "Havonta fizetendő részlet")]
+        public double Payment { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [Display(Name = "Hátralévő törlesztőrészlet")]
+        public double RemainingPrincipal { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [Display(Name = "Kiegyenlített tartozás")]
+        public double PrinciplePaid { get; set; }
+
+
+    }
+    public class PeriodicCalculationThird
+    {
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [Display(Name = "Havonta fizetendő kamat")]
+        public double InterestPaid { get; set; }
+        [Display(Name = "Hónap")]
+        public int Period { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [Display(Name = "Havonta fizetendő részlet")]
+        public double Payment { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [Display(Name = "Hátralévő törlesztőrészlet")]
+        public double RemainingPrincipal { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [Display(Name = "Kiegyenlített tartozás")]
+        public double PrinciplePaid { get; set; }
+
+
+    }
+
+
+
+
+
+
+
 }

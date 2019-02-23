@@ -1,16 +1,25 @@
-﻿@model IEnumerable<LoanCalculator.Models.CalculationSearchModel>
+﻿
+
+
+@model IEnumerable<LoanCalculator.Models.CalculationSearchModel>
+
 @{
-
 	ViewBag.Title = "CalculationSearch";
-}
 
+	AjaxOptions options = new AjaxOptions
+	{
+		//I added this Id to the tbody that I want to render
+		UpdateTargetId = "searchResult",
+
+		//This means that I want to replace the inside, not insert after or before it
+		InsertionMode = InsertionMode.Replace
+	};
+}
 <h2 class="title">Korábbi kalkulációk keresése</h2>
 
 
-@using (Html.BeginForm("CalculationSearch", "Loan", FormMethod.Post))
+@using (Ajax.BeginForm("SearchItem", options)) //This Form redirects to the SearchItem action in Item controller
 {
-	@Html.AntiForgeryToken()
-
 	<div class="containersearch anim3">
 		<div class="row ">
 			<div class="form-group col-xs-6 anim4">
@@ -50,15 +59,16 @@
 	<div class="container" id="m3">
 		<div class="row">
 			<div class="col-xs-12 anim5">
-				
+
 				<input type="submit" value="Keresés" id="search" class="btn btn-primary" />
 
 			</div>
 		</div>
 	</div>
-
-
 }
+
+
+
 
 <table class="table table-hover table-bordered anim2">
 	<tr>
@@ -69,45 +79,22 @@
 			@Html.DisplayNameFor(model => model.LoanAmmount)
 		</th>
 		<th>
-			@Html.DisplayNameFor(model => model.Interest)
+			@Html.DisplayNameFor(model => model.AverageInterest)
 		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.Sum)
-		</th>
+		@*<th>
+				@Html.DisplayNameFor(model => model.Sum)
+			</th>*@
 		<th>
 			@Html.DisplayNameFor(model => model.Term)
 		</th>
 		<th>Műveletek</th>
 	</tr>
 
-	@foreach (var item in Model)
-	{
-		<tr>
-			<td>
-				@Html.DisplayFor(model => item.CalculationTime)
-			</td>
-			<td>
-				@Html.DisplayFor(model => item.LoanAmmount)
-			</td>
-			<td>
-				@Html.DisplayFor(model => item.Interest)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Sum)
-			</td>
-			<td>
-				@Html.DisplayFor(model => item.Term)
-			</td>
-			<td>
-				@Html.ActionLink("Részletek", "DataCalculation", new { Id = item.Id })|
-				@Html.ActionLink("Törlés", "Delete", new { id = item.Id })|
-				@Html.ActionLink("Export", "ExportToExcel", new { id = item.Id })
-			</td>
+	<tbody id="searchResult">
 
-		</tr>
-	}
+		@Html.Partial("SearchItem")
 
+	</tbody>
 </table>
-
 
 

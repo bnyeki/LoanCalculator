@@ -1,24 +1,28 @@
 ﻿
 
 @{
-	ViewBag.Title = "Home Page";
+				/**/
+
+				ViewBag.Title = "Home Page";
 }
 
 @if (!User.Identity.IsAuthenticated)
 {
 	<div class="jumbotron">
-		
+
 		<h2 style="font-size:33px;" class="lead">Üdvözöllek a Hitelkalkulátor programban, a használathoz kérjük regisztrálj!</h2>
-		
+
 
 	</div>
+	
+
 }
 @if (User.Identity.IsAuthenticated)
 {
 	<div class="jumbotron">
-		
+
 		<h2 class="lead">Hello @ViewBag.firstName !</h2>
-		
+
 
 	</div>
 }

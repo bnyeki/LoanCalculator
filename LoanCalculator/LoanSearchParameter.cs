@@ -17,9 +17,16 @@ namespace LoanCalculator
         public int Id { get; set; }
         public double LoanAmmount { get; set; }
         public int Term { get; set; }
-        public double Interest { get; set; }
-        public int InterestPeriod { get; set; }
+        public int InterestPeriodId { get; set; }
         public System.DateTime CalculationTime { get; set; }
         public string UserId { get; set; }
+        public double InterestFirstPeriod { get; set; }
+        public Nullable<double> InterestSecondPeriod { get; set; }
+        public Nullable<double> InterestThirdPeriod { get; set; }
+        public int TermFirstPeriod { get; set; }
+        public Nullable<int> TermSecondPeriod { get; set; }
+        public Nullable<int> TermThirdPeriod { get; set; }
+    
+        public virtual Period Period { get; set; }
     }
 }

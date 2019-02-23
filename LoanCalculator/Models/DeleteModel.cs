@@ -18,28 +18,19 @@ namespace LoanCalculator
         [Display(Name = "Futamidő")]
         public int Term { get; set; }
 
-        [Display(Name = "Kamat")]
-        public double Interest { get; set; }
-
-        [Display(Name = "Kamatperiódus")]
-        public int InterestPeriod { get; set; }
+        //[DisplayFormat(DataFormatString = "{0:C}")]
+        [Display(Name = "ÁtlagosKamat")]
+        public double? AverageInterest { get; set; }
 
         [Display(Name = "Kalkuláció Ideje")]
         [DataType(DataType.Date)]
         public DateTime CalculationTime { get; set; }
 
-        [Display(Name = "Lejárat Dátuma")]
-        [DataType(DataType.Date)]
-        public DateTime ExpireTime { get; set; }
+        //[Display(Name = "Lejárat Dátuma")]
+        //[DataType(DataType.Date)]
+        //public DateTime ExpireTime { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:C}")]
-        [Display(Name = "Havi átlagos fizetendő összeg")]
-        public double Average { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:C}")]
-        [Display(Name = "Összesen visszafizetendő összeg")]
-        public double Sum { get; set; }
-
+       
        
         [Display(Name= "Felhasználónév")]
         public string UserName { get; set; }

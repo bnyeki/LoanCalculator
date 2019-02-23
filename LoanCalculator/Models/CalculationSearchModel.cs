@@ -8,39 +8,54 @@ namespace LoanCalculator.Models
 {
     public class CalculationSearchModel
     {
-        
+
         [Display(Name = "Azonosító")]
         public int Id { get; set; }
-        
+
         [DisplayFormat(DataFormatString = "{0:C}")]
         [Display(Name = "Hitelösszeg")]
         public double LoanAmmount { get; set; }
-        
+
         [Display(Name = "Futamidő")]
         public int Term { get; set; }
-        
+
         [Display(Name = "Kamat")]
         public double Interest { get; set; }
-        
+
         [Display(Name = "Kamatperiódus")]
         public double InterestPeriod { get; set; }
-        
+
         [Display(Name = "Kalkuláció Ideje")]
         [DataType(DataType.Date)]
         public DateTime CalculationTime { get; set; }
         public string UserId { get; set; }
-        
-        public List<PeriodicCalculation> Calculation { get; set; }
+
+        public List<PeriodicCalculationFirst> Calculation { get; set; }
         public ReturnFilter Filter { get; set; }
+
+        //[DisplayFormat(DataFormatString = "{0:C}")]
+        [Display(Name = "ÁtlagosKamat")]
+        public double? AverageInterest { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:C}")]
         [Display(Name = "Havi átlagos fizetendő összeg")]
-        public double Average { get; set; }
+        public double? Average { get; set; }
         [DisplayFormat(DataFormatString = "{0:C}")]
         [Display(Name = "Összesen visszafizetendő összeg")]
         public double Sum { get; set; }
 
-        
+        public double InterestFirstPeriod { get; set; }
+
+        public double? InterestSecondPeriod { get; set; }
+
+        public double? InterestThirdPeriod { get; set; }
+
+        public int FirstTerm { get; set; }
+
+        public int? SecondTerm { get; set; }
+
+        public int? ThirdTerm { get; set; }
+
     }
 
     public class ReturnFilter
@@ -50,7 +65,7 @@ namespace LoanCalculator.Models
         [Display(Name = "Dátum")]
         public DateTime? CalculationTimeFrom { get; set; }
 
-       // [Display(Name = "Befejező dátum")]
+        // [Display(Name = "Befejező dátum")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? CalculationTimeTo { get; set; }
@@ -61,7 +76,7 @@ namespace LoanCalculator.Models
 
     }
 
-   
+
 
 
 

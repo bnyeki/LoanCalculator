@@ -1,0 +1,30 @@
+﻿@model IEnumerable<LoanCalculator.Models.CalculationSearchModel>
+
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(model => item.CalculationTime)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.LoanAmmount)
+			</td>
+			<td>
+				@Html.DisplayFor(model => item.AverageInterest)%
+			</td>
+			@*<td>
+					@Html.DisplayFor(modelItem => item.Sum)
+				</td>*@
+			<td>
+				@Html.DisplayFor(model => item.Term)
+			</td>
+			<td>
+				@Html.ActionLink("Részletek", "DataCalculation", new { Id = item.Id })|
+				@Html.ActionLink("Törlés", "Delete", new { id = item.Id })|
+				@Html.ActionLink("Export", "ExportToExcel", new { id = item.Id })
+			</td>
+
+		</tr>
+	}
+

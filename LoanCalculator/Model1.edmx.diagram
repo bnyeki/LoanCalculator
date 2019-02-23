@@ -5,7 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2cd0ce58106740d9bc2924df5ccb7837" Name="Diagram1">
-        <EntityTypeShape EntityType="LoanDBModel.LoanSearchParameter" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LoanDBModel.sysdiagrams" Width="1.5" PointX="5.125" PointY="0.75" />
+        <EntityTypeShape EntityType="LoanDBModel.LoanSearchParameter" Width="1.5" PointX="3" PointY="4" />
+        <EntityTypeShape EntityType="LoanDBModel.Period" Width="1.5" PointX="0.75" PointY="5" />
+        <AssociationConnector Association="LoanDBModel.FK_LoanSearchParameter_Period" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
