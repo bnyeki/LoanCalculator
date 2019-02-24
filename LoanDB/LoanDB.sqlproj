@@ -71,6 +71,8 @@
   <ItemGroup>
     <Build Include="dbo\Tables\LoanSearchParameter.sql" />
     <None Include="Scripts\Init\dbo.LoanSearchParameter.Table.sql" />
+    <None Include="Scripts\Init\dbo.Period.Table.sql" />
+    <Build Include="dbo\Tables\Period.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment1.sql" />

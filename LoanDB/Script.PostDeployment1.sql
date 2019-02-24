@@ -9,5 +9,5 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-
+  :r .\Scripts\Init\dbo.Period.Table.sql
   :r .\Scripts\Init\dbo.LoanSearchParameter.Table.sql
