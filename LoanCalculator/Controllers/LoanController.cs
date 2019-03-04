@@ -556,7 +556,7 @@ namespace LoanCalculator.Controllers
 
         }
 
-        //method for Getting datas per period 2st interest period 
+        //method for Getting datas per period 2nd interest period 
 
         private List<PeriodicCalculationSecond> SecondPeriodCalculation(int? inputTermSecond, int inputTermFirst, double? inputInterestSecond, double loanAmmount, int term, double sumAllPeriod, double sumFirstPeriod)
         {
@@ -599,7 +599,7 @@ namespace LoanCalculator.Controllers
         }
 
 
-        //method for Getting datas per period 3st interest period 
+        //method for Getting datas per period 3rd interest period 
 
         private List<PeriodicCalculationThird> ThirdPeriodCalculation(int? inputTermThird, int? InputTermSecond, double? inputInterestThird, double loanAmmount, int term, double sumAllPeriod, double sumFirstPeriod, double sumSecondPeriod)
         {
